@@ -9,12 +9,28 @@
 <body>
     <header class="navbar">
         <div class="container nav-content">
-            <h1>Elizabeth's Clinic</h1>
-            <p class="subtitle">Frankfurt am Main &bull; Smart Online Scheduling</p>
+            <div>
+                <h1>Elizabeth's Clinic</h1>
+                <p class="subtitle">Frankfurt am Main &bull; Smart Online Scheduling</p>
+            </div>
+            <button type="button" id="open-settings-btn" class="btn btn-secondary btn-sm">⚙ Settings</button>
         </div>
     </header>
 
     <main class="container main-content">
+        <!-- Server Offline Error Card -->
+        <div id="server-offline-card" class="card offline-card hidden">
+            <div class="offline-icon">⚠</div>
+            <div class="offline-details">
+                <h3>Clinic Server Offline or Unreachable</h3>
+                <p>Cannot connect to the clinic server backend at: <code id="offline-url">http://localhost:8080/api/v1</code></p>
+                <div class="offline-actions">
+                    <button type="button" id="retry-conn-btn" class="btn btn-primary btn-sm">Retry Connection</button>
+                    <button type="button" id="config-server-btn" class="btn btn-secondary btn-sm">⚙ Server Settings</button>
+                </div>
+            </div>
+        </div>
+
         <section class="card booking-section">
             <h2>Book an Appointment</h2>
             <p class="description">Select a physician and an available time slot to avoid waiting times.</p>
@@ -84,6 +100,28 @@
             <div id="lookup-results" class="results-container"></div>
         </section>
     </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Server Configuration</h3>
+                <button type="button" id="close-settings-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="config-api-base-input">Backend Server API URL:</label>
+                    <input type="text" id="config-api-base-input" placeholder="http://localhost:8080/api/v1">
+                    <small class="description">Runtime URL (defaults to config.json or localStorage override)</small>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="test-conn-btn" class="btn btn-secondary">Test Connection</button>
+                    <button type="button" id="save-config-btn" class="btn btn-primary">Save &amp; Apply</button>
+                </div>
+                <div id="settings-status" class="alert hidden"></div>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <p>AIDANS &bull; Automated Inventory, Data, Appointment, & Network System</p>
