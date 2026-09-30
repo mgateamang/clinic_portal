@@ -139,8 +139,13 @@ lookupBtn.addEventListener("click", async () => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const list = await res.json();
 
-        // Filter appointments matching phone number (or show all if empty filter for testing)
-        const matched = list.filter(a => a.phone === phone || !phone || a.patient_name.toLowerCase().includes(phone.toLowerCase()));
+        // Filter appointments matching phone number or patient name
+        const matched = list.filter(a => 
+            (a.patient_phone && a.patient_phone.includes(phone)) ||
+            (a.phone && a.phone.includes(phone)) ||
+            !phone ||
+            (a.patient_name && a.patient_name.toLowerCase().includes(phone.toLowerCase()))
+        );
 
         if (matched.length === 0) {
             lookupResults.innerHTML = '<p class="description">No appointments found for this inquiry.</p>';
