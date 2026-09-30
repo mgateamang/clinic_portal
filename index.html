@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elizabeth's Clinic - Patient Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <h1>Elizabeth's Clinic</h1>
+            <p class="subtitle">Frankfurt am Main &bull; Smart Online Scheduling</p>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="card booking-section">
+            <h2>Book an Appointment</h2>
+            <p class="description">Select a physician and an available time slot to avoid waiting times.</p>
+
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="doctor-select">Choose Doctor:</label>
+                    <select id="doctor-select" required>
+                        <option value="">-- Loading Doctors --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="appointment-date">Select Date:</label>
+                    <input type="date" id="appointment-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="slot-select">Available Time Slots:</label>
+                    <select id="slot-select" required disabled>
+                        <option value="">-- Select a doctor and date first --</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="first-name">First Name:</label>
+                        <input type="text" id="first-name" placeholder="Max" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" placeholder="Mustermann" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" placeholder="+49-170-1234567" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="email">Email Address (Optional):</label>
+                        <input type="email" id="email" placeholder="patient@example.de">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Reason for Visit:</label>
+                    <textarea id="reason" rows="2" placeholder="Brief description of consultation symptoms..."></textarea>
+                </div>
+
+                <button type="submit" id="book-btn" class="btn btn-primary">Confirm Appointment</button>
+            </form>
+
+            <div id="booking-alert" class="alert hidden"></div>
+        </section>
+
+        <section class="card lookup-section">
+            <h2>Check Your Appointments</h2>
+            <p class="description">Look up scheduled consultations using your phone number.</p>
+
+            <div class="search-box">
+                <input type="tel" id="lookup-phone" placeholder="Enter your phone number">
+                <button type="button" id="lookup-btn" class="btn btn-secondary">Search</button>
+            </div>
+
+            <div id="lookup-results" class="results-container"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>AIDANS &bull; Automated Inventory, Data, Appointment, & Network System</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
