@@ -1,3 +1,15 @@
+/**
+ * @file app.js
+ * @brief AIDANS Patient Portal - Client-Side Controller.
+ *
+ * Provides a responsive, dependency-free web experience for clinic patients.
+ * Responsibilities:
+ *  - Dynamically fetches doctor directory and real-time appointment slot availability.
+ *  - Submits new patient booking requests with form validation and collision detection.
+ *  - Queries patient appointment histories by contact phone number.
+ *  - Handles network offline states, retry logic, and runtime API base configuration.
+ */
+
 // AIDANS Clinic Patient Portal
 let API_BASE = "http://localhost:8080/api/v1";
 
